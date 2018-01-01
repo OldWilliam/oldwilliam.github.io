@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>标题</title>
-  <icon>https://www.gravatar.com/avatar/400bacad0833f01313dd2c4a2c320176</icon>
-  <subtitle>子标题</subtitle>
+  <title>JimW的博客</title>
+  
+  <subtitle>enjoy it</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.baidu.com/"/>
@@ -11,7 +11,7 @@
   
   <author>
     <name>JimWave</name>
-    <email>jimwave@foxmail.com</email>
+    
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
