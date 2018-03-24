@@ -29,7 +29,7 @@
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="/images/Fresco-MVC-contract.png">
 <meta property="og:image" content="https://www.fresco-cn.org/static/imagepipeline.png">
-<meta property="og:updated_time" content="2018-03-24T13:19:53.000Z">
+<meta property="og:updated_time" content="2018-03-24T13:28:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fresco初探">
 <meta name="twitter:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实现类Pi">
@@ -139,7 +139,7 @@
         <h1 class="title">Fresco初探</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-03-24T13:19:53.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2018-03-24T13:28:23.000Z" itemprop="datePublished" class="page-time">
   2018-03-24
 </time>
 
@@ -169,7 +169,7 @@
     <div class="post-card">
         <h1 class="post-card-title">Fresco初探</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-03-24 21:19:53" datetime="2018-03-24T13:19:53.000Z"  itemprop="datePublished">2018-03-24</time>
+            <time class="post-time" title="2018-03-24 21:28:23" datetime="2018-03-24T13:28:23.000Z"  itemprop="datePublished">2018-03-24</time>
 
             
 
@@ -206,7 +206,7 @@
 <pre><code>Uri uri = Uri.parse(&quot;https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/logo.png&quot;);
 SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
 draweeView.setImageURI(uri);
-</code></pre><p>其实最后都是一个套路给View一个Controller，想当于View层换了一个Pontroller</p>
+</code></pre><p>其实最后都是一个套路给View一个Controller，想当于View层换了一个Controller</p>
 <pre><code>public void setImageURI(Uri uri, @Nullable Object callerContext) {
     DraweeController controller = mSimpleDraweeControllerBuilder
         .setCallerContext(callerContext)
