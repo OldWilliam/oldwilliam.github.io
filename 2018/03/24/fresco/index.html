@@ -20,17 +20,20 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView  DraweeHierarchy Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy DraweeController 负责处理交互并展现到DrweeView，默认实现类Pipe">
+    <meta name="description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实现类Pi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fresco初探">
 <meta property="og:url" content="www.baidu.com/2018/03/24/fresco/index.html">
 <meta property="og:site_name" content="JimWave的博客">
-<meta property="og:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView  DraweeHierarchy Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy DraweeController 负责处理交互并展现到DrweeView，默认实现类Pipe">
+<meta property="og:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实现类Pi">
 <meta property="og:locale" content="Chinese">
-<meta property="og:updated_time" content="2018-03-24T12:59:32.000Z">
+<meta property="og:image" content="/images/Fresco-MVC-contract.png">
+<meta property="og:image" content="https://www.fresco-cn.org/static/imagepipeline.png">
+<meta property="og:updated_time" content="2018-03-24T13:19:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fresco初探">
-<meta name="twitter:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView  DraweeHierarchy Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy DraweeController 负责处理交互并展现到DrweeView，默认实现类Pipe">
+<meta name="twitter:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实现类Pi">
+<meta name="twitter:image" content="/images/Fresco-MVC-contract.png">
     
         <link rel="alternate" type="application/atom+xml" title="JimWave的博客" href="/atom.xml">
     
@@ -136,7 +139,7 @@
         <h1 class="title">Fresco初探</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-03-24T12:59:32.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2018-03-24T13:19:53.000Z" itemprop="datePublished" class="page-time">
   2018-03-24
 </time>
 
@@ -166,7 +169,7 @@
     <div class="post-card">
         <h1 class="post-card-title">Fresco初探</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-03-24 20:59:32" datetime="2018-03-24T12:59:32.000Z"  itemprop="datePublished">2018-03-24</time>
+            <time class="post-time" title="2018-03-24 21:19:53" datetime="2018-03-24T13:19:53.000Z"  itemprop="datePublished">2018-03-24</time>
 
             
 
@@ -175,16 +178,30 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="Drawees"><a href="#Drawees" class="headerlink" title="Drawees"></a>Drawees</h2><ul>
-<li>DraweeView，View层，默认实现类 SimpleDraweeView </li>
-<li>DraweeHierarchy Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy</li>
-<li>DraweeController 负责处理交互并展现到DrweeView，默认实现类PipelineDraweeController</li>
-<li>DraweeControllerBuilder 建造者模式，DraweeController有太多可配置参数<br><strong>Drawees 负责图片的呈现。它由三个元素组成，有点像MVC模式。</strong></li>
-</ul>
+            <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="Drawees"><a href="#Drawees" class="headerlink" title="Drawees"></a>Drawees</h2><ol>
+<li><strong>DraweeView</strong>，View层，默认实现类 SimpleDraweeView； </li>
+<li><strong>DraweeHierarchy</strong>，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy；</li>
+<li><strong>DraweeController</strong>，负责处理交互并展现到DrweeView，默认实现类PipelineDraweeController；</li>
+<li><strong>DraweeControllerBuilder</strong> 建造者模式，DraweeController有太多可配置参数；</li>
+</ol>
+<p><strong>Drawees 负责图片的呈现，它由三个元素组成，有点像MVC模式。</strong>Fresco的MVC约束：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/Fresco-MVC-contract.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h2 id="ImagePipeLine"><a href="#ImagePipeLine" class="headerlink" title="ImagePipeLine"></a>ImagePipeLine</h2><ul>
 <li>Bitmap处理方式的抽象，各种缓存策略等等。</li>
 <li>ImagePipeline就是一个加载图片的组件，如果有可能，甚至可以拿出来让其他图片加载框架用。比如Volley的图片加载组件。</li>
 </ul>
+<p>ImagePipeLine工作流程：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://www.fresco-cn.org/static/imagepipeline.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>官方用法，</p>
 <pre><code>Uri uri = Uri.parse(&quot;https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/logo.png&quot;);
 SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
