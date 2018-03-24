@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.baidu.com/"/>
-  <updated>2018-01-01T18:11:38.000Z</updated>
+  <updated>2018-03-24T12:26:53.000Z</updated>
   <id>www.baidu.com/</id>
   
   <author>
@@ -17,19 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>HelloWorld</title>
-    <link href="www.baidu.com/2018/01/02/HelloWorld/"/>
-    <id>www.baidu.com/2018/01/02/HelloWorld/</id>
-    <published>2018-01-01T16:24:26.000Z</published>
-    <updated>2018-01-01T18:11:38.000Z</updated>
+    <title></title>
+    <link href="www.baidu.com/2018/03/24/fresco/"/>
+    <id>www.baidu.com/2018/03/24/fresco/</id>
+    <published>2018-03-24T12:26:52.000Z</published>
+    <updated>2018-03-24T12:26:53.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="今天是新年的第二天"><a href="#今天是新年的第二天" class="headerlink" title="今天是新年的第二天"></a>今天是新年的第二天</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h3 id="Drawees"><a href="#Drawees" class="headerlink" title="Drawees"></a>Drawees</h3><ul><li><p>DraweeView，View层，默认实现类<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- DraweeHierarchy Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类```GenericDraweeHierarchy</span><br></pre></td></tr></table></figure></p></li><li><p>DraweeController 负责处理交互并展现到DrweeView，默认实现类<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- DraweeControllerBuilder 建造者模式，DraweeController有太多可配置参数</span><br><span class="line">&gt; Drawees 负责图片的呈现。它由三个元素组成，有点像MVC模式。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### ImagePipeLine</span><br><span class="line">- Bitmap处理方式的抽象，各种缓存策略等等。</span><br><span class="line">- ImagePipeline就是一个加载图片的组件，如果有可能，甚至可以拿出来让其他图片加载框架用。比如Volley的图片加载组件。</span><br><span class="line"></span><br><span class="line"># 使用</span><br><span class="line">官方用法，</span><br></pre></td></tr></table></figure></p></li></ul><p>Uri uri = Uri.parse(“<a href="https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/logo.png" target="_blank" rel="noopener">https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/logo.png</a>“);<br>SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);<br>draweeView.setImageURI(uri);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">其实最后都是一个套路给View一个Controller</span><br><span class="line">，想当于View层换了一个Pontroller</span><br></pre></td></tr></table></figure></p><p>public void setImageURI(Uri uri, @Nullable Object callerContext) {<br>    DraweeController controller = mSimpleDraweeControllerBuilder<br>        .setCallerContext(callerContext)<br>        .setUri(uri)<br>        .setOldController(getController())<br>        .build();<br>    setController(controller);<br>}<br>```</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><a href="https://github.com/desmond1121/Fresco-Source-Analysis" target="_blank" rel="noopener">源码解析</a></li><li><a href="https://github.com/liaohuqiu/fresco-demo-for-gradle" target="_blank" rel="noopener">FrescoDemo</a></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;今天是新年的第二天&quot;&gt;&lt;a href=&quot;#今天是新年的第二天&quot; class=&quot;headerlink&quot; title=&quot;今天是新年的第二天&quot;&gt;&lt;/a&gt;今天是新年的第二天&lt;/h2&gt;
+        &lt;h1 id=&quot;一些概念&quot;&gt;&lt;a href=&quot;#一些概念&quot; class=&quot;headerlink&quot; title=&quot;一些概念&quot;&gt;&lt;/a&gt;一些概念&lt;/h1&gt;&lt;h3 id=&quot;Drawees&quot;&gt;&lt;a href=&quot;#Drawees&quot; class=&quot;headerlink&quot; title=&quot;Dra
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>HelloWorld</title>
+    <link href="www.baidu.com/2018/01/02/HelloWorld/"/>
+    <id>www.baidu.com/2018/01/02/HelloWorld/</id>
+    <published>2018-01-01T16:24:26.000Z</published>
+    <updated>2018-03-24T12:37:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="今天是新年的第二天"><a href="#今天是新年的第二天" class="headerlink" title="今天是新年的第二天"></a>今天是新年的第二天</h2><p>Fuck aijalsjflaslj</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;今天是新年的第二天&quot;&gt;&lt;a href=&quot;#今天是新年的第二天&quot; class=&quot;headerlink&quot; title=&quot;今天是新年的第二天&quot;&gt;&lt;/a&gt;今天是新年的第二天&lt;/h2&gt;&lt;p&gt;Fuck aijalsjflaslj&lt;/p&gt;
+
       
     
     </summary>
