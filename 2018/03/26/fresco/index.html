@@ -20,20 +20,21 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实现类Pi">
+    <meta name="description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fresco初探">
 <meta property="og:url" content="www.baidu.com/2018/03/26/fresco/index.html">
 <meta property="og:site_name" content="JimWave的博客">
-<meta property="og:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实现类Pi">
+<meta property="og:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默">
 <meta property="og:locale" content="Chinese">
 <meta property="og:image" content="/images/Fresco-MVC-contract.png">
 <meta property="og:image" content="https://www.fresco-cn.org/static/imagepipeline.png">
 <meta property="og:image" content="/images/Fresco-ImagePipeline.png">
-<meta property="og:updated_time" content="2018-03-26T06:26:52.000Z">
+<meta property="og:image" content="/images/Fresco-SequenceChart.png">
+<meta property="og:updated_time" content="2018-03-26T06:44:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fresco初探">
-<meta name="twitter:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实现类Pi">
+<meta name="twitter:description" content="一些概念Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默">
 <meta name="twitter:image" content="/images/Fresco-MVC-contract.png">
     
         <link rel="alternate" type="application/atom+xml" title="JimWave的博客" href="/atom.xml">
@@ -140,7 +141,7 @@
         <h1 class="title">Fresco初探</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-03-26T06:26:52.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2018-03-26T06:44:29.000Z" itemprop="datePublished" class="page-time">
   2018-03-26
 </time>
 
@@ -160,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一些概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">一些概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Drawees"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Drawees</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ImagePipeLine"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ImagePipeLine</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一些概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">一些概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Drawees"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Drawees</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ImagePipeLine"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ImagePipeLine</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#时序图"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">时序图</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考</span></a></li></ol>
         </nav>
     </aside>
     
@@ -170,7 +171,7 @@
     <div class="post-card">
         <h1 class="post-card-title">Fresco初探</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-03-26 14:26:52" datetime="2018-03-26T06:26:52.000Z"  itemprop="datePublished">2018-03-26</time>
+            <time class="post-time" title="2018-03-26 14:44:29" datetime="2018-03-26T06:44:29.000Z"  itemprop="datePublished">2018-03-26</time>
 
             
 
@@ -181,7 +182,7 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="一些概念"><a href="#一些概念" class="headerlink" title="一些概念"></a>一些概念</h1><h2 id="Drawees"><a href="#Drawees" class="headerlink" title="Drawees"></a>Drawees</h2><ol>
 <li><strong>DraweeView</strong>，View层，默认实现类 SimpleDraweeView； </li>
-<li><strong>DraweeHierarchy</strong>，Model层，持有Drawable等，Drawable是AndroidFramework抽象出来的可画对象的意思，默认实现类GenericDraweeHierarchy；</li>
+<li><strong>DraweeHierarchy</strong>，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy；</li>
 <li><strong>DraweeController</strong>，负责处理交互并展现到DrweeView，默认实现类PipelineDraweeController；</li>
 <li><strong>DraweeControllerBuilder</strong> 建造者模式，DraweeController有太多可配置参数；</li>
 </ol>
@@ -210,7 +211,14 @@
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>官方用法，</p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/images/Fresco-SequenceChart.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>官方用法</p>
 <pre><code>Uri uri = Uri.parse(&quot;https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/logo.png&quot;);
 SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
 draweeView.setImageURI(uri);
