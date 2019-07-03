@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>JimWave的博客</title>
+  <title>老威廉的博客</title>
   
   <subtitle>enjoy it</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>www.baidu.com/</id>
   
   <author>
-    <name>JimWave</name>
+    <name>OldWilliam</name>
     
   </author>
   
