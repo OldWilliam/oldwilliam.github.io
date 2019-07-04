@@ -103,22 +103,22 @@
 
 
 
-<meta name="description" content="Vsync和TripleBuffer Vsync本来就存在，是硬件显示设备为了解决画面撕裂Tearing  之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况   In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system g">
+<meta name="description" content="简介Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ProjectButter">
-<meta property="og:url" content="www.baidu.com/2019/07/04/ProjectButter/index.html">
+<meta property="og:title" content="Fresco初探">
+<meta property="og:url" content="www.baidu.com/2018/03/26/Fresco初探/index.html">
 <meta property="og:site_name" content="OldWilliam">
-<meta property="og:description" content="Vsync和TripleBuffer Vsync本来就存在，是硬件显示设备为了解决画面撕裂Tearing  之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况   In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system g">
+<meta property="og:description" content="简介Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://note.youdao.com/yws/res/11755/WEBRESOURCE149ed863cab7187c0091bad4aa8068b5">
-<meta property="og:image" content="http://note.youdao.com/yws/res/11763/WEBRESOURCE27f9b651a13c9c1f9154ae902f713125">
-<meta property="og:image" content="http://note.youdao.com/yws/res/11774/WEBRESOURCE0aabb452aacb6b4a4efdbf975c209077">
-<meta property="og:image" content="http://note.youdao.com/yws/res/11795/WEBRESOURCEfdee70002a1bbb6b50440564fb0b7151">
-<meta property="og:updated_time" content="2019-07-04T12:34:32.551Z">
+<meta property="og:image" content="/images/Fresco-MVC-contract.png">
+<meta property="og:image" content="https://www.fresco-cn.org/static/imagepipeline.png">
+<meta property="og:image" content="/images/Fresco-ImagePipeline.png">
+<meta property="og:image" content="/images/Fresco-SequenceChart.png">
+<meta property="og:updated_time" content="2019-07-04T12:51:50.163Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ProjectButter">
-<meta name="twitter:description" content="Vsync和TripleBuffer Vsync本来就存在，是硬件显示设备为了解决画面撕裂Tearing  之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况   In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system g">
-<meta name="twitter:image" content="http://note.youdao.com/yws/res/11755/WEBRESOURCE149ed863cab7187c0091bad4aa8068b5">
+<meta name="twitter:title" content="Fresco初探">
+<meta name="twitter:description" content="简介Drawees DraweeView，View层，默认实现类 SimpleDraweeView；  DraweeHierarchy，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy； DraweeController，负责处理交互并展现到DrweeView，默认实">
+<meta name="twitter:image" content="/images/Fresco-MVC-contract.png">
 
 
 
@@ -148,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="www.baidu.com/2019/07/04/ProjectButter/"/>
+  <link rel="canonical" href="www.baidu.com/2018/03/26/Fresco初探/"/>
 
 
 
 
 
-  <title>ProjectButter | OldWilliam</title>
+  <title>Fresco初探 | OldWilliam</title>
   
 
 
@@ -271,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="www.baidu.com/2019/07/04/ProjectButter/">
+    <link itemprop="mainEntityOfPage" href="www.baidu.com/2018/03/26/Fresco初探/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="OldWilliam">
@@ -288,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ProjectButter</h1>
+          <h1 class="post-title" itemprop="name headline">Fresco初探</h1>
         
 
         <div class="post-meta">
@@ -300,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T20:27:42+08:00">
-                2019-07-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-26T00:00:00+08:00">
+                2018-03-26
               </time>
             
 
@@ -338,39 +338,37 @@
       
 
       
-        <h3 id="Vsync和TripleBuffer"><a href="#Vsync和TripleBuffer" class="headerlink" title="Vsync和TripleBuffer"></a>Vsync和TripleBuffer</h3><ul>
-<li><p>Vsync本来就存在，是硬件显示设备为了解决画面撕裂<code>Tearing</code></p>
-</li>
-<li><p>之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况</p>
-<blockquote>
-<p> In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system got around to it.</p>
-</blockquote>
-<p>  <img src="http://note.youdao.com/yws/res/11755/WEBRESOURCE149ed863cab7187c0091bad4aa8068b5" alt="没有Vsync"></p>
-<p>  屏幕刷新后，cpu和gpu没有立马去渲染，导致后面开始渲染后剩余时间不多了，渲染不能完成</p>
-</li>
-<li><p>引入Vsync后 </p>
-<blockquote>
-<p>the whole process of making the next frame starts as soon as the last frame is finished</p>
-<p>In other words, they’re using as much of the 16ms as they can.</p>
-</blockquote>
-<p>  <img src="http://note.youdao.com/yws/res/11763/WEBRESOURCE27f9b651a13c9c1f9154ae902f713125" alt="引入Vsync后"></p>
-</li>
-<li><p>但是如果出现GPU、CPU的渲染速度（或者可能是这一帧做的事太多，任务过重<code>Snowballing</code>）赶不上Display的刷新速率的话，会出现卡顿</p>
-<p>  <img src="http://note.youdao.com/yws/res/11774/WEBRESOURCE0aabb452aacb6b4a4efdbf975c209077" alt="CPU/GPU的FPS小于Display的FPS"></p>
-<p>  因为是双缓冲，在第二帧，Display占着A帧，GPU占着B帧，导致第二帧CPU虽然空闲但是没有缓冲了，没法去渲染已经存在的任务，会导致后续又发生卡顿。</p>
-<p>  另外，只有在Vsync的时候Display和GPU才会交换帧，所以即使上图第一帧的时候，GPU用B Buffer只超出Vsync一点时间，就算他渲染完成，因为不会交换Buffer，所以CPU也拿不到Buffer去渲染</p>
-</li>
-<li><p>引入三缓冲改善后，CPU可以在第三个Buffer工作，渲染存在的任务，让画面从卡顿恢复。但是再增加缓冲也没用了，因为：<strong>1</strong>、一共也就三个地方在用Buffer，GPU、CPU、Display，这种利用率最高；<strong>2</strong>、就三缓冲来说，就已经产生了16ms的延迟。比如说，GPU已经占了两个Vsync周期的情况，那么D Buffer会在32ms后渲染，会对输入行为造成延迟感。</p>
-<blockquote>
-<p> Android is also able to recover from a slowdown more smoothly.</p>
-</blockquote>
-<p>  <img src="http://note.youdao.com/yws/res/11795/WEBRESOURCEfdee70002a1bbb6b50440564fb0b7151" alt="三缓冲"></p>
-</li>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="Drawees"><a href="#Drawees" class="headerlink" title="Drawees"></a>Drawees</h2><ol>
+<li><strong>DraweeView</strong>，View层，默认实现类 SimpleDraweeView； </li>
+<li><strong>DraweeHierarchy</strong>，Model层，描述绘制对象数据，持有树状结构的多层Drawable，为了实现UI的可变性，比传统的View嵌套实现更加轻量级，默认实现类GenericDraweeHierarchy；</li>
+<li><strong>DraweeController</strong>，负责处理交互并展现到DrweeView，默认实现类PipelineDraweeController；</li>
+<li><strong>DraweeControllerBuilder</strong> 建造者模式，DraweeController有太多可配置参数；</li>
+</ol>
+<p><strong>Drawees 负责图片的呈现，它由三个元素组成，有点像MVC模式。</strong>Fresco的MVC约束：<br><img src="/images/Fresco-MVC-contract.png" alt=""></p>
+<h2 id="ImagePipeLine"><a href="#ImagePipeLine" class="headerlink" title="ImagePipeLine"></a>ImagePipeLine</h2><ul>
+<li>Bitmap处理方式的抽象，各种缓存策略等等。</li>
+<li>ImagePipeline就是一个加载图片的组件，如果有可能，甚至可以拿出来让其他图片加载框架用。比如Volley的图片加载组件。</li>
 </ul>
-<h3 id="Video-and-Article"><a href="#Video-and-Article" class="headerlink" title="Video and Article"></a>Video and Article</h3><ul>
-<li><a href="https://www.youtube.com/watch?v=Q8m9sHdyXnE" target="_blank" rel="noopener">Google I/O 2012 - For Butter or Worse: Smoothing Out Performance in Android UIs</a></li>
-<li><a href="https://blog.csdn.net/innost/article/details/8272867" target="_blank" rel="noopener">Android Project Butter分析 from 《深入理解Android》作者</a></li>
-<li><a href="https://www.androidpolice.com/2012/07/12/getting-to-know-android-4-1-part-3-project-butter-how-it-works-and-what-it-added/" target="_blank" rel="noopener">Project Butter - How It Works And What It Added</a></li>
+<p><em>ImagePipeLine工作流程</em>：<br><img src="https://www.fresco-cn.org/static/imagepipeline.png" alt=""></p>
+<p><em>ImagePipeLine工作流实现</em>：<br><img src="/images/Fresco-ImagePipeline.png" alt=""></p>
+<h2 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h2><p><img src="/images/Fresco-SequenceChart.png" alt=""></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>官方用法</p>
+<pre><code>Uri uri = Uri.parse(&quot;https://raw.githubusercontent.com/facebook/fresco/gh-pages/static/logo.png&quot;);
+SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
+draweeView.setImageURI(uri);
+</code></pre><p>其实最后都是一个套路给View一个Controller，想当于View层换了一个Controller</p>
+<pre><code>public void setImageURI(Uri uri, @Nullable Object callerContext) {
+    DraweeController controller = mSimpleDraweeControllerBuilder
+        .setCallerContext(callerContext)
+        .setUri(uri)
+        .setOldController(getController())
+        .build();
+    setController(controller);
+}    
+</code></pre><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://github.com/desmond1121/Fresco-Source-Analysis" target="_blank" rel="noopener">源码解析</a></li>
+<li><a href="https://github.com/liaohuqiu/fresco-demo-for-gradle" target="_blank" rel="noopener">FrescoDemo</a></li>
+<li><a href="https://www.fresco-cn.org/docs/using-drawees-xml.html" target="_blank" rel="noopener">Fresco.cn</a></li>
 </ul>
 
       
@@ -392,22 +390,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/26/fresco/" rel="next" title="Fresco初探">
-                <i class="fa fa-chevron-left"></i> Fresco初探
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
       
 
       
@@ -481,7 +463,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -528,7 +510,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vsync和TripleBuffer"><span class="nav-number">1.</span> <span class="nav-text">Vsync和TripleBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Video-and-Article"><span class="nav-number">2.</span> <span class="nav-text">Video and Article</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawees"><span class="nav-number">1.1.</span> <span class="nav-text">Drawees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ImagePipeLine"><span class="nav-number">1.2.</span> <span class="nav-text">ImagePipeLine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时序图"><span class="nav-number">1.3.</span> <span class="nav-text">时序图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
