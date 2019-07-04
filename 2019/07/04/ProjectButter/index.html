@@ -103,17 +103,22 @@
 
 
 
-<meta name="description" content="积少成多，慢即是快">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="www.baidu.com/categories/index.html">
+<meta name="description" content="Vsync和TripleBuffer Vsync本来就存在，是硬件显示设备为了解决画面撕裂Tearing  之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况   In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OldWilliam">
+<meta property="og:url" content="www.baidu.com/2019/07/04/ProjectButter/index.html">
 <meta property="og:site_name" content="OldWilliam">
-<meta property="og:description" content="积少成多，慢即是快">
+<meta property="og:description" content="Vsync和TripleBuffer Vsync本来就存在，是硬件显示设备为了解决画面撕裂Tearing  之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况   In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-03T18:35:39.147Z">
+<meta property="og:image" content="http://note.youdao.com/yws/res/11755/WEBRESOURCE149ed863cab7187c0091bad4aa8068b5">
+<meta property="og:image" content="http://note.youdao.com/yws/res/11763/WEBRESOURCE27f9b651a13c9c1f9154ae902f713125">
+<meta property="og:image" content="http://note.youdao.com/yws/res/11774/WEBRESOURCE0aabb452aacb6b4a4efdbf975c209077">
+<meta property="og:image" content="http://note.youdao.com/yws/res/11795/WEBRESOURCEfdee70002a1bbb6b50440564fb0b7151">
+<meta property="og:updated_time" content="2019-07-04T12:27:43.665Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
-<meta name="twitter:description" content="积少成多，慢即是快">
+<meta name="twitter:title" content="OldWilliam">
+<meta name="twitter:description" content="Vsync和TripleBuffer Vsync本来就存在，是硬件显示设备为了解决画面撕裂Tearing  之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况   In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system g">
+<meta name="twitter:image" content="http://note.youdao.com/yws/res/11755/WEBRESOURCE149ed863cab7187c0091bad4aa8068b5">
 
 
 
@@ -143,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="www.baidu.com/categories/"/>
+  <link rel="canonical" href="www.baidu.com/2019/07/04/ProjectButter/"/>
 
 
 
 
 
-  <title>categories | OldWilliam</title>
+  <title> | OldWilliam</title>
   
 
 
@@ -254,33 +259,171 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="www.baidu.com/2019/07/04/ProjectButter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="OldWilliam">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="OldWilliam">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T20:27:42+08:00">
+                2019-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="Vsync和TripleBuffer"><a href="#Vsync和TripleBuffer" class="headerlink" title="Vsync和TripleBuffer"></a>Vsync和TripleBuffer</h3><ul>
+<li><p>Vsync本来就存在，是硬件显示设备为了解决画面撕裂<code>Tearing</code></p>
+</li>
+<li><p>之前没有在软件层次引入Vysnc，导致屏幕刷新和渲染数据不同步，有以下情况</p>
+<blockquote>
+<p> In Ice Cream Sandwich, processing for the next frame would just kind-of lazily start whenever the system got around to it.</p>
+</blockquote>
+<p>  <img src="http://note.youdao.com/yws/res/11755/WEBRESOURCE149ed863cab7187c0091bad4aa8068b5" alt="没有Vsync"></p>
+<p>  屏幕刷新后，cpu和gpu没有立马去渲染，导致后面开始渲染后剩余时间不多了，渲染不能完成</p>
+</li>
+<li><p>引入Vsync后 </p>
+<blockquote>
+<p>the whole process of making the next frame starts as soon as the last frame is finished</p>
+<p>In other words, they’re using as much of the 16ms as they can.</p>
+</blockquote>
+<p>  <img src="http://note.youdao.com/yws/res/11763/WEBRESOURCE27f9b651a13c9c1f9154ae902f713125" alt="引入Vsync后"></p>
+</li>
+<li><p>但是如果出现GPU、CPU的渲染速度（或者可能是这一帧做的事太多，任务过重<code>Snowballing</code>）赶不上Display的刷新速率的话，会出现卡顿</p>
+<p>  <img src="http://note.youdao.com/yws/res/11774/WEBRESOURCE0aabb452aacb6b4a4efdbf975c209077" alt="CPU/GPU的FPS小于Display的FPS"></p>
+<p>  因为是双缓冲，在第二帧，Display占着A帧，GPU占着B帧，导致第二帧CPU虽然空闲但是没有缓冲了，没法去渲染已经存在的任务，会导致后续又发生卡顿。</p>
+<p>  另外，只有在Vsync的时候Display和GPU才会交换帧，所以即使上图第一帧的时候，GPU用B Buffer只超出Vsync一点时间，就算他渲染完成，因为不会交换Buffer，所以CPU也拿不到Buffer去渲染</p>
+</li>
+<li><p>引入三缓冲改善后，CPU可以在第三个Buffer工作，渲染存在的任务，让画面从卡顿恢复。但是再增加缓冲也没用了，因为：<strong>1</strong>、一共也就三个地方在用Buffer，GPU、CPU、Display，这种利用率最高；<strong>2</strong>、就三缓冲来说，就已经产生了16ms的延迟。比如说，GPU已经占了两个Vsync周期的情况，那么D Buffer会在32ms后渲染，会对输入行为造成延迟感。</p>
+<blockquote>
+<p> Android is also able to recover from a slowdown more smoothly.</p>
+</blockquote>
+<p>  <img src="http://note.youdao.com/yws/res/11795/WEBRESOURCEfdee70002a1bbb6b50440564fb0b7151" alt="三缓冲"></p>
+</li>
+</ul>
+<h3 id="Video-and-Article"><a href="#Video-and-Article" class="headerlink" title="Video and Article"></a>Video and Article</h3><ul>
+<li><a href="https://www.youtube.com/watch?v=Q8m9sHdyXnE" target="_blank" rel="noopener">Google I/O 2012 - For Butter or Worse: Smoothing Out Performance in Android UIs</a></li>
+<li><a href="https://blog.csdn.net/innost/article/details/8272867" target="_blank" rel="noopener">Android Project Butter分析 from 《深入理解Android》作者</a></li>
+<li><a href="https://www.androidpolice.com/2012/07/12/getting-to-know-android-4-1-part-3-project-butter-how-it-works-and-what-it-added/" target="_blank" rel="noopener">Project Butter - How It Works And What It Added</a></li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/26/fresco/" rel="next" title="Fresco初探">
+                <i class="fa fa-chevron-left"></i> Fresco初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -313,8 +456,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -366,6 +518,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vsync和TripleBuffer"><span class="nav-number">1.</span> <span class="nav-text">Vsync和TripleBuffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Video-and-Article"><span class="nav-number">2.</span> <span class="nav-text">Video and Article</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
