@@ -1,2 +1,1 @@
-# oldwilliam.github.io
-https://oldwilliam.github.io/
+Just Read Me.
